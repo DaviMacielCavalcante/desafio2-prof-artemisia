@@ -39,9 +39,6 @@ DATABASE_URL = endereço do seu banco
 6. Execute o script responsável pela pipeline de ETL
    ```bash
    python main.py
-7. Veja o lado legal da força em ação:
-
-<div align="center"> <img src="https://tenor.com/bD6qA.gif" alt="darth_maul" width="500"/></div>
 
 ## Como contribuir:
 Contribuições são bem-vindas! Por favor, siga estas diretrizes:
