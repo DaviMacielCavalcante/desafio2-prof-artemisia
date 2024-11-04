@@ -21,24 +21,10 @@ Este projeto foi desenvolvido como parte da mentoria que eu recebo. O objetivo �
    ```bash
    git clone https://github.com/DaviMacielCavalcante/desafio_etl_begginer.git
    cd desafio_etl_begginer
-2. Instale as dependências do arquivo requirements.txt
-   ```bash
-   pip install -r requirements.txt
-3. Instale o postgres na sua máquina
-4. Faça um arquivo chamado .env com as seguintes variáveis
-```
-DATABASE_PORT = porta que o seu banco usar
-DABASE_NAME = nome que você deu ai banco
-DATABASE_USERNAME = usuário que tem acesso ao banco
-DATABASE_PASSWORD = senha do usuário
-DATABASE_URL = endereço do seu banco 
-```
-5. Execute o scrip que é responsável por fazer a criação das tabelas no postgres
+2. Execute o scrip que é responsável por fazer a criação das tabelas no postgres
    ```bash
    python criacao_tabelas.py
-6. Execute o script responsável pela pipeline de ETL
-   ```bash
-   python main.py
+
 
 ## Como contribuir:
 Contribuições são bem-vindas! Por favor, siga estas diretrizes:
