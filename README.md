@@ -13,7 +13,7 @@ Este projeto foi desenvolvido como parte da mentoria que eu recebo. O objetivo �
 - Tratamento de dados a partir de um dataset no formato `.csv`
 - Transformação de dados com limpeza, padronização e enriquecimento em SQL, inicialmente em um banco local (Postgres).
 - Criação de um DataLake na cloud, com camadas: raw, silver, gold e diamond.
-- Consumo dos dados via Power BI.
+- Consumo dos dados via ferramenta de BI.
 
 ## Instalação:
 
