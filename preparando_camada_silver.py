@@ -1,33 +1,40 @@
 import pandas as pd
 import duckdb
 
+csv_path = "./data_lake/raw/raw.csv"
+
 # Criação da camada silver
 
-df = pd.read_csv("./datasets/indexData.csv")
-
-duckdb.execute("CREATE TABLE raw AS SELECT * FROM df")
+duckdb.execute("""
+    CREATE TABLE raw AS            
+    SELECT * FROM read_csv_auto(?)""", [csv_path])
 
 duckdb.execute("ALTER TABLE raw ADD COLUMN currency VARCHAR(5)")
 
-duckdb.execute("""
+exchanges_to_currency = {
+    "NYA": "USD",
+    "IXIC": "USD",
+    "HSI": "HKD",
+    "000001.SS": "CNY",
+    "N225": "JPY",
+    "N100": "EUR",
+    "399001.SZ": "CNY",
+    "GSPTSE": "CAD",
+    "NSEI": "INR",
+    "GDAXI": "EUR",
+    "KS11": "KRW",
+    "SSMI": "CHF",
+    "TWII": "TWD",
+    "J203.JO": "ZAR"
+}
+
+for exchange, currency in exchanges_to_currency.items():
+    duckdb.execute("""
     UPDATE raw 
-        SET currency = CASE
-        WHEN "Index" = 'NYA' THEN 'USD'
-        WHEN "Index" = 'IXIC' THEN 'USD'
-        WHEN "Index" = 'HSI' THEN 'HKD'
-        WHEN "Index" = '000001.SS' THEN 'CNY'
-        WHEN "Index" = 'N225' THEN 'JPY'
-        WHEN "Index" = 'N100' THEN 'EUR'
-        WHEN "Index" = '399001.SZ' THEN 'CNY'
-        WHEN "Index" = 'GSPTSE' THEN 'CAD'
-        WHEN "Index" = 'NSEI' THEN 'INR'
-        WHEN "Index" = 'GDAXI' THEN 'EUR'
-        WHEN "Index" = 'KS11' THEN 'KRW'
-        WHEN "Index" = 'SSMI' THEN 'CHF'
-        WHEN "Index" = 'TWII' THEN 'TWD'
-        WHEN "Index" = 'J203.JO' THEN 'ZAR'
-        ELSE '-'
-        END """)
+        SET currency = ?
+        WHERE "Index" = ? 
+    """, [currency, exchange])
+
 
 ## Procurando valores duplicados ou nulos
 
@@ -83,30 +90,6 @@ count_rows_silver = duckdb.execute("""
     SELECT COUNT(*)
     FROM silver
 """).fetch_df()
-
-# Enriquecendo os dados da camada silver
-
-duckdb.execute("""
-    ALTER TABLE silver
-    ADD COLUMN year INT
-""")
-
-duckdb.execute("""
-    ALTER TABLE silver
-    ADD COLUMN month INT
-""")
-
-duckdb.execute("""
-    ALTER TABLE silver
-    ADD COLUMN day INT
-""")
-
-duckdb.execute("""
-    UPDATE silver
-        SET year = EXTRACT(YEAR FROM CAST("Date" AS DATE)),
-            month = EXTRACT(MONTH FROM CAST("Date" AS DATE)),
-            day = EXTRACT(DAY FROM CAST("Date" AS DATE))
-""")
 
 # Como o arquivo não é grande, exportei como csv
 

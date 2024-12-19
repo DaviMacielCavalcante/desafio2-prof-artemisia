@@ -25,7 +25,7 @@ CREATE TABLE exchanges (
 	exchange VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE silver(
+CREATE TABLE gold(
 	id SERIAL PRIMARY KEY,
 	exchange VARCHAR(10) NOT NULL,
 	date DATE NOT NULL,
@@ -56,37 +56,37 @@ CREATE TABLE diamond(
 	day INT REFERENCES days(id)
 );
 
--- MIGRANDO DA CAMADA SILVER PARA A GOLD
+-- MIGRANDO DA CAMADA GOLD PARA A DIAMOND
 
 INSERT INTO exchanges(exchange)
 SELECT DISTINCT(exchange)
-FROM silver;
+FROM gold;
 
 INSERT INTO currencys(currency)
 SELECT DISTINCT(currency)
-FROM silver;
+FROM gold;
 
 INSERT INTO years(year)
 SELECT DISTINCT(year)
-FROM silver;
+FROM gold;
 
 INSERT INTO months(month)
 SELECT DISTINCT(month)
-FROM silver
+FROM gold
 WHERE year IN (SELECT year FROM years);
 
 INSERT INTO days(day)
 SELECT DISTINCT day
-FROM silver
+FROM gold
 WHERE year IN (SELECT year FROM years) 
 	AND month IN (SELECT month FROM months);
 
 INSERT INTO diamond (exchange, open, close, adj_close, high, low, volume, currency, year, month, day)
 SELECT 
-	(SELECT id FROM exchanges WHERE silver.exchange = exchanges.exchange),
+	(SELECT id FROM exchanges WHERE gold.exchange = exchanges.exchange),
 	open, close, adj_close, high, low, volume, 
-	(SELECT id FROM currencys WHERE silver.currency = currencys.currency),
-	(SELECT id FROM years WHERE silver.year = years.year), 
-	(SELECT id FROM months WHERE silver.month = months.month), 
-	(SELECT id FROM days WHERE silver.day = days.day)	
+	(SELECT id FROM currencys WHERE gold.currency = currencys.currency),
+	(SELECT id FROM years WHERE gold.year = years.year), 
+	(SELECT id FROM months WHERE gold.month = months.month), 
+	(SELECT id FROM days WHERE gold.day = days.day)	
 FROM silver;
