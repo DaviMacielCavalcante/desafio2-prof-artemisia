@@ -31,15 +31,17 @@ Este projeto foi desenvolvido como parte da mentoria que eu recebo. O objetivo �
   ```bash
    python preparando_camada_gold.py
   ```
- - Para a camada diamond, o script é o mesmo, portanto só altere as linhas 48 a 66 para que os arquivos sejam salvos no diretório da camada diamond.
+6. Por fim, o da camada diamond:
+  ```bash
+   python preparando_camada_diamond.py
+  ``` 
 7. A partir disso, crie as camadas do datalake no PostgreSQL.
 8. Importe os dados dos respectivos arquivos `.csv`, se quiser pode usar via GUI com o pgAdmin ou via console conectando diretamente ao PostgreSQL.
  - Depois deste passo, você deve estar com a camada raw e a silver já presentes no banco.
-9. Para a camada gold execute o script: `script_banco_gold.sql`, porém:
+9. Para a camada diamond execute o script: `script_banco_diamond.sql`, porém:
   - Execute inicialmente a parte do script que cria as tabelas;
-  - Em seguida, importe os dados para a tabela silver;
-  - Após isso, execute o resto do script para que ele possa fazer a migração dos dados para as entidades da camada gold;
-  - Faça o mesmo para a camada diamond, usando o arquivo `script_banco_diamond.sql`.
+  - Em seguida, importe os dados para a tabela gold;
+  - Após isso, execute o resto do script para que ele possa fazer a migração dos dados para as entidades da camada diamond;
 10. Subindo para a cloud:
     - Crie uma conta na AWS;
     - Siga este tutorial na AWS LATAM para subir o datalake:
@@ -50,7 +52,7 @@ Este projeto foi desenvolvido como parte da mentoria que eu recebo. O objetivo �
    ```bash
     https://youtu.be/WS3LUbK0ung?si=YXc_Wy5j53Ct34z3
    ```   
-10. Continue no caminho legal da força:
+11. Continue no caminho legal da força:
 
 <div align="center"> <img src="https://media.giphy.com/media/hwj7MQ3XDPVAI/giphy.gif?cid=790b761188097q3xe9iugkqzqcw8dq1ot2unfypfy59iq2z9&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="darth_vader_local_nevando" width="500"/></div>
 
