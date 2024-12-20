@@ -38,58 +38,21 @@ for exchange, currency in exchanges_to_currency.items():
 
 ## Procurando valores duplicados ou nulos
 
-duplicates = duckdb.execute("""
-    SELECT *, COUNT(*)
-    FROM raw
-    GROUP BY "Index", "Date", "Open", "High", "Low", "Close", "Adj Close", "Volume", "currency"
-    HAVING COUNT(*) > 1
-""").fetchdf()
-
-null_rows = duckdb.execute("""
-    SELECT COUNT(*)
-    FROM raw
-    WHERE "Index" IS NULL OR
-        "Date" IS NULL OR 
-        "Open" IS NULL OR
-        "High" IS NULL OR
-        "Low" IS NULL OR
-        "Close" IS NULL OR
-        "Adj Close" IS NULL OR
-        "Volume" IS NULL OR 
-        "currency" IS NULL
-""").fetchdf()
-
 duckdb.execute("""
-        CREATE TABLE silver AS 
-        SELECT * FROM raw WHERE "Index" NOT NULL AND
-        "Date" NOT NULL AND 
-        "Open" NOT NULL AND
-        "High" NOT NULL AND
-        "Low" NOT NULL AND
-        "Close" NOT NULL AND
-        "Adj Close" NOT NULL AND
-        "Volume" NOT NULL AND 
-        "currency" NOT NULL
+    CREATE TABLE silver AS 
+    SELECT * FROM raw 
+    WHERE "Index" IS NOT NULL AND TRIM("Index") NOT IN ('', ' ', 'null') AND
+          "Date" IS NOT NULL AND
+          "Open" IS NOT NULL AND TRIM("Open") NOT IN ('', ' ', 'null') AND
+          "High" IS NOT NULL AND TRIM("High") NOT IN ('', ' ', 'null') AND
+          "Low" IS NOT NULL AND TRIM("Low") NOT IN ('', ' ', 'null') AND
+          "Close" IS NOT NULL AND TRIM("Close") NOT IN ('', ' ', 'null') AND
+          "Adj Close" IS NOT NULL AND TRIM("Adj Close") NOT IN ('', ' ', 'null') AND
+          "Volume" IS NOT NULL AND TRIM("Volume") NOT IN ('', ' ', 'null') AND
+          "currency" IS NOT NULL AND TRIM("currency") NOT IN ('', ' ', 'null');
 """)
 
-null_rows_silver = duckdb.execute("""
-    SELECT COUNT(*)
-    FROM silver
-    WHERE "Index" IS NULL OR
-        "Date" IS NULL OR 
-        "Open" IS NULL OR
-        "High" IS NULL OR
-        "Low" IS NULL OR
-        "Close" IS NULL OR
-        "Adj Close" IS NULL OR
-        "Volume" IS NULL OR 
-        "currency" IS NULL
-""").fetchdf()
 
-count_rows_silver = duckdb.execute("""
-    SELECT COUNT(*)
-    FROM silver
-""").fetch_df()
 
 # Como o arquivo não é grande, exportei como csv
 
