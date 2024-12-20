@@ -35,13 +35,6 @@ Este projeto foi desenvolvido como parte da mentoria que eu recebo. O objetivo �
   ```bash
    python preparando_camada_diamond.py
   ``` 
-7. A partir disso, crie as camadas do datalake no PostgreSQL.
-8. Importe os dados dos respectivos arquivos `.csv`, se quiser pode usar via GUI com o pgAdmin ou via console conectando diretamente ao PostgreSQL.
- - Depois deste passo, você deve estar com a camada raw e a silver já presentes no banco.
-9. Para a camada diamond execute o script: `script_banco_diamond.sql`, porém:
-  - Execute inicialmente a parte do script que cria as tabelas;
-  - Em seguida, importe os dados para a tabela gold;
-  - Após isso, execute o resto do script para que ele possa fazer a migração dos dados para as entidades da camada diamond;
 10. Subindo para a cloud:
     - Crie uma conta na AWS;
     - Siga este tutorial na AWS LATAM para subir o datalake:
