@@ -31,11 +31,11 @@ Este projeto foi desenvolvido como parte da mentoria que eu recebo. O objetivo √
   ```bash
    python preparando_camada_gold.py
   ```
-6. Por fim, o da camada diamond:
+7. Por fim, o da camada diamond:
   ```bash
    python preparando_camada_diamond.py
   ``` 
-10. Subindo para a cloud:
+8. Subindo para a cloud:
     - Crie uma conta na AWS;
     - Siga este tutorial na AWS LATAM para subir o datalake:
     ```bash
@@ -45,7 +45,7 @@ Este projeto foi desenvolvido como parte da mentoria que eu recebo. O objetivo √
    ```bash
     https://youtu.be/WS3LUbK0ung?si=YXc_Wy5j53Ct34z3
    ```   
-11. Continue no caminho legal da for√ßa:
+9. Continue no caminho legal da for√ßa:
 
 <div align="center"> <img src="https://media.giphy.com/media/hwj7MQ3XDPVAI/giphy.gif?cid=790b761188097q3xe9iugkqzqcw8dq1ot2unfypfy59iq2z9&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="darth_vader_local_nevando" width="500"/></div>
 
