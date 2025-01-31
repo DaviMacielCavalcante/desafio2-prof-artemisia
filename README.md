@@ -1,79 +1,85 @@
-# desafio2-prof-artemisia
- 
-![Licença usada](https://img.shields.io/github/license/DaviMacielCavalcante/desafio_etl_begginer)
+# **challenge2-prof-artemisia**
+
+![License Used](https://img.shields.io/github/license/DaviMacielCavalcante/desafio_etl_begginer)
 ![Python](https://img.shields.io/badge/Python-3.12.4-blue)
-![Status](https://img.shields.io/badge/Status-Finalizado-brightgreen)
-![Banco de Dados](https://img.shields.io/badge/Banco%20de%20Dados-PostgreSQL-blue)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Database](https://img.shields.io/badge/Database-PostgreSQL-blue)
 ![Cloud_AWS](https://img.shields.io/badge/Cloud-AWS-yellow?style=flat&color=%23FF9900)
 
-## Descrição:
-Este projeto foi desenvolvido como parte da mentoria que eu recebo. O objetivo é carregar os dados em nuvem, após serem devidamente tratados, para que estejam acessíveis para ferramentas de BI.
+## **Description:**  
+This project was developed as part of the mentorship I receive. The goal is to load the data into the cloud, after being properly processed, so that they are accessible to BI tools.  
 
-## Funcionalidades:
-- Tratamento de dados a partir de um dataset no formato `.csv`
-- Transformação de dados com limpeza, padronização e enriquecimento em SQL, inicialmente em um banco local (Postgres).
-- Criação de um DataLake na cloud, com camadas: raw, silver, gold e diamond.
-- Consumo dos dados via ferramenta de BI.
+## **Features:**  
+- Data processing from a dataset in `.csv` format  
+- Data transformation with cleaning, standardization, and enrichment in SQL, initially in a local database (PostgreSQL).  
+- Creation of a DataLake in the cloud, with layers: raw, silver, gold, and diamond.  
+- Data consumption via BI tool.  
 
-## Instalação:
+## **Installation:**  
 
-1. Clone este repositório:
+1. Clone this repository:  
    ```bash
    git clone https://github.com/DaviMacielCavalcante/desafio2-prof-artemisia
    cd desafio2-prof-artemisia
-2. Baixe o arquivo `indexData.csv` deste link `https://www.kaggle.com/datasets/mattiuzc/stock-exchange-data`
-3. Na raiz do projeto, crie um diretório chamado "datasets", e ponha o arquivo `indexData.csv` nele.
- - Recomendo limpar os arquivos `.csv` presentes nas camadas do datalake, só para você ter a experiência de ver tudo acontecer ou alterar os scripts da forma que preferir.
-4. Execute o scrip que é responsável por fazer a criação da camada silver:
+   ```
+2. Download the `indexData.csv` file from this link:  
+   ```bash
+   https://www.kaggle.com/datasets/mattiuzc/stock-exchange-data
+   ```
+3. In the root of the project, create a directory called "datasets" and place the `indexData.csv` file inside it.  
+   - It is recommended to clean the `.csv` files present in the DataLake layers to experience everything happening or modify the scripts as you prefer.  
+4. Run the script responsible for creating the silver layer:  
    ```bash
    python preparando_camada_silver.py
-5. Em seguida, o da camada gold:
-  ```bash
+   ```
+5. Next, run the gold layer script:  
+   ```bash
    python preparando_camada_gold.py
-  ```
-7. Por fim, o da camada diamond:
-  ```bash
+   ```
+6. Finally, run the diamond layer script:  
+   ```bash
    python preparando_camada_diamond.py
-  ``` 
-8. Subindo para a cloud:
-    - Crie uma conta na AWS;
-    - Siga este tutorial na AWS LATAM para subir o datalake:
+   ```  
+7. Uploading to the cloud:  
+    - Create an AWS account;  
+    - Follow this AWS LATAM tutorial to upload the DataLake:  
     ```bash
     https://youtube.com/playlist?list=PLQHh55hXC4yrBZ4yookmQPlX2zM9dZ-MH&si=lpGE6Hz2F6t37THw
-    ```
-    - Se quiser conectar ao Power BI, siga este tutorial:
-   ```bash
+    ```  
+    - If you want to connect to Power BI, follow this tutorial:  
+    ```bash
     https://youtu.be/WS3LUbK0ung?si=YXc_Wy5j53Ct34z3
-   ```   
-9. Continue no caminho legal da força:
+    ```   
+8. Stay on the right side of the Force:  
 
-<div align="center"> <img src="https://media.giphy.com/media/hwj7MQ3XDPVAI/giphy.gif?cid=790b761188097q3xe9iugkqzqcw8dq1ot2unfypfy59iq2z9&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="darth_vader_local_nevando" width="500"/></div>
+<div align="center">  
+<img src="https://media.giphy.com/media/hwj7MQ3XDPVAI/giphy.gif?cid=790b761188097q3xe9iugkqzqcw8dq1ot2unfypfy59iq2z9&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="darth_vader_local_snowing" width="500"/>  
+</div>  
 
-## Como contribuir:
-Contribuições são bem-vindas! Por favor, siga estas diretrizes:
+## **How to Contribute:**  
+Contributions are welcome! Please follow these guidelines:  
 
-- Faça um fork do projeto.
-- Crie uma branch para a funcionalidade que deseja implementar (git checkout -b minha-nova-feature).
-- Faça os commits com boas descrições (git commit -m 'Adiciona nova feature').
-- Faça um push para a branch criada (git push origin minha-nova-feature).
-- Abra um pull request para revisão.
+- Fork the project.  
+- Create a branch for the feature you want to implement (`git checkout -b my-new-feature`).  
+- Commit your changes with meaningful descriptions (`git commit -m 'Add new feature'`).  
+- Push to the created branch (`git push origin my-new-feature`).  
+- Open a pull request for review.  
 
-## Licença
-Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE.md para mais detalhes.
+## **License:**  
+This project is licensed under the MIT License - see the `LICENSE.md` file for more details.  
 
-## Contato
-Se você tiver alguma dúvida ou problema, entre em contato:
+## **Contact:**  
+If you have any questions or issues, feel free to contact:  
+📧 Email: **davicc@outlook.com.br**  
 
-e-mail: davicc@outlook.com.br
+## **Sith Lords Responsible for the Project:**  
+- **Darth Davi** ⚔️😡  
 
-## Lordes Sith responsáveis pelo projeto
-- Darth Davi ⚔️😡
+## **Mentor Who Proposed the Challenge:**  
+[Prof. Artemisia Weyl](https://www.linkedin.com/in/arteweyl/)  
 
-## Mentora que propôs o desafio:
-[Profa. Artemisia Weyl](https://www.linkedin.com/in/arteweyl/)
+👩‍💻 Mentor’s GitHub: [https://github.com/arteweyl](https://github.com/arteweyl)  
 
-Github da mentora: https://github.com/arteweyl
-
-*Through victory, my chains are broken.
-<br>
+*Through victory, my chains are broken.  
 The Force shall free me.*
+
